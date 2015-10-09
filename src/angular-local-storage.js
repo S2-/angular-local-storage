@@ -117,7 +117,9 @@ angularLocalStorage.provider('localStorageService', function() {
       if (isUndefined(value)) {
         value = null;
       } else {
-        value = toJson(value);
+        if (typeof(value) === 'object') {
+          value = toJson(value);
+        }
       }
 
       // If this browser does not support local storage use cookies
